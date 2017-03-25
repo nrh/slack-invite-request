@@ -2,23 +2,19 @@
 # -
 # Configure the strings below however suits your needs
 ---
-title: Slack Invite Request Demo
+title: Cloud Therapy
 main:
   header:
     blurb: "Join us on Slack!"
     detail:
-      "... and help us bring down the Resistance! First we just need to verify
-      some information from you and then we'll get you started."
     subtext:
       "We look forward to seeing you there."
   about:
     team:
-      name: "Enlightened Demo"
-      link: "https://enlightened.slack.com"
+      name: "Cloud Therapy"
+      link: "https://cloud-therapy.slack.com"
       description:
-        "This is just a SIR demo. Please feel free to send an application (we
-        enjoy reading your comments), but no invites will be sent out as a
-        result."
+        "Group therapy for cloud technicians"
 apply:
   # Displayed at the top of the page
   header:
@@ -51,59 +47,58 @@ apply:
       # Add as many as you like
       -
         # name of this field
-        name: "username"
+        name: "company"
         # css class name for styling
-        class: "agent-name"
+        class: "company-name"
         # title shown to user
-        title: "Ingress agent name"
+        title: "Company"
         # help text shown to user below title text
-        help: "Let us know your agent name for verification."
+        help: "Who do you work for?"
         # required fields must be filled in to submit the form
         required: true
         # readonly fields are not editable
         readonly: false
 
-      -
-        name: "community"
-        class: "community"
-        title: "Community name"
-        help:
-          "To help speed up the verification process, you may provide
-          the name(s) of any communities you are a member of."
-        required: false
-        readonly: false
-
-      -
-        name: "comments"
-        class: "comments"
-        title: "Comments"
-        help:
-          "Any additional information you would like to provide
-          to help expedite your request."
-        required: false
-        readonly: false
-        # if this property is defined, the input will use the defined html
-        html: <br><textarea class="form-control" id="comments" name="comments" rows="4"></textarea>
-
-      -
-        name: "screenshot"
-        class: "screenshot"
-        title: "Upload a screenshot of Ingress showing your player account"
-        help:
-          "It's <b>highly recommended</b> to submit a recent screenshot
-          that clearly shows your agent name and the open faction chat or
-          your agent profile. This will greatly increase your chances of
-          approval. Screenshots of the <i>intel page, IITC, or other
-          unofficial app will not be accepted</i>—you must capture a
-          screenshot from the <i>official Android or iOS app</i>."
-        required: true
-        readonly: false
-        html: <input type="file" class="form-control screenshot" accept="image/*" id="screenshot" name="screenshot">
+#      -
+#        name: "community"
+#        class: "community"
+#        title: "Community name"
+#        help:
+#          "To help speed up the verification process, you may provide
+#          the name(s) of any communities you are a member of."
+#        required: false
+#        readonly: false
+#
+#      -
+#        name: "comments"
+#        class: "comments"
+#        title: "Comments"
+#        help:
+#          "Any additional information you would like to provide
+#          to help expedite your request."
+#        required: false
+#        readonly: false
+#        # if this property is defined, the input will use the defined html
+#        html: <br><textarea class="form-control" id="comments" name="comments" rows="4"></textarea>
+#
+#      -
+#        name: "screenshot"
+#        class: "screenshot"
+#        title: "Upload a screenshot of Ingress showing your player account"
+#        help:
+#          "It's <b>highly recommended</b> to submit a recent screenshot
+#          that clearly shows your agent name and the open faction chat or
+#          your agent profile. This will greatly increase your chances of
+#          approval. Screenshots of the <i>intel page, IITC, or other
+#          unofficial app will not be accepted</i>—you must capture a
+#          screenshot from the <i>official Android or iOS app</i>."
+#        required: true
+#        readonly: false
+#        html: <input type="file" class="form-control screenshot" accept="image/*" id="screenshot" name="screenshot">
 signin:
   blurb: "Thanks for your interest in joining!"
   detail:
     "To help verify your identity, we request that you sign in with Google+
     to continue."
   subtext:
-    "Your public profile information and public G+ activity will be used to
-    verify your identity."
+    "Your public profile information will be used verify your identity."
