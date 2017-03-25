@@ -26,3 +26,15 @@
 input:not([type=submit]):not([type=file]), textarea {
   width: 200px;
 }
+
+.slack-logo-inline {
+  height: 180px;
+  margin: 0 auto;
+  vertical-align: middle;
+  display: inline;
+}
+
+.freudy-logo {
+  float: right;
+}
+

@@ -5,7 +5,7 @@
 title: Cloud Therapy
 main:
   header:
-    blurb: "Join us on Slack!"
+    blurb: "Join us on"
     detail:
     subtext:
       "We look forward to seeing you there."
@@ -14,7 +14,7 @@ main:
       name: "Cloud Therapy"
       link: "https://cloud-therapy.slack.com"
       description:
-        "Group therapy for cloud technicians"
+        "Group therapy for cloud developers, operators and technicians"
 apply:
   # Displayed at the top of the page
   header:

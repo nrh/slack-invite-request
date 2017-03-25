@@ -4,7 +4,7 @@
 <div class="jumbotron">
   <div class="container">
     {{#header}}
-    <h1>{{blurb}}</h1>
+    <h1>{{blurb}}<img alt="Slack" class="slack-logo-inline" src="images/Slack_Monochrome_Black.svg"/></h1>
     <p>{{detail}}</p>
     <p><a class="btn btn-primary btn-lg" href="/apply" role="button">Apply now &raquo;</a></p>
     <p>{{subtext}}</p>
@@ -18,9 +18,9 @@
     {{#team}}
     <div class="col-md-4">
       <h2>About us</h2>
-      <p class="lead">We are team {{name}}</p>
+      <p class="lead">{{name}}</p>
       <p>{{description}}</p>
-      <p><a class="btn btn-default" href="{{link}}" role="button">View details &raquo;</a></p>
+      <!--      <p><a class="btn btn-default" href="{{link}}" role="button">View details &raquo;</a></p>-->
     </div>
     {{/team}}
     {{!-- Add some additional info in these spaces, or remove them and remove the "col-md-4" class above --}}
