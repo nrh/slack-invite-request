@@ -38,3 +38,7 @@ input:not([type=submit]):not([type=file]), textarea {
   float: right;
 }
 
+.navbar-image {
+  float: left;
+  height: 50px;
+}
