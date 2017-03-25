@@ -35,7 +35,10 @@ input:not([type=submit]):not([type=file]), textarea {
 }
 
 .freudy-logo {
+  margin: 50px 0px 0px auto;
+  height: 300px;
   float: right;
+  opacity: 0.8;
 }
 
 .navbar-image {
