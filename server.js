@@ -50,14 +50,18 @@ if (!clientId) {
 }
 
 var mc = require('connect-memjs')(session);
-let MEMCACHE_URL = process.env.MEMCACHE_URL || '127.0.0.1:11211';
 var mcstore = null;
 
 if (process.env.USE_GAE_MEMCACHE) {
-  MEMCACHE_URL = `${process.env.GAE_MEMCACHE_HOST}:${process.env.GAE_MEMCACHE_PORT}`;
+  let GAE_MEMCACHE_HOST = process.env.GAE_MEMCACHE_HOST || '127.0.0.1';
+  let GAE_MEMCACHE_PORT = process.env.GAE_MEMCACHE_PORT || '11211';
+  let MEMCACHE_URL = GAE_MEMCACHE_HOST + ':' + GAE_MEMCACHE_PORT;
   var mcstore = new mc({servers: [MEMCACHE_URL]});
 } else {
-  var mcstore = new mc({servers: [MEMCACHE_URL], username: process.env.MEMCACHE_USERNAME, password: process.env.MEMCACHE_PASSWORD});
+  let MEMCACHE_URL = process.env.MEMCACHE_URL || '127.0.0.1:11211';
+  let MEMCACHE_USERNAME = process.env.MEMCACHE_USERNAME || 'test';
+  let MEMCACHE_PASSWORD = process.env.MEMCACHE_PASSWORD || 'test';
+  var mcstore = new mc({servers: [MEMCACHE_URL], username: MEMCACHE_USERNAME, password: MEMCACHE_PASSWORD});
 }
 
 var slack = require('./lib/slack')(slackUrl);
