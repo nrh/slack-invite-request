@@ -45,3 +45,14 @@ input:not([type=submit]):not([type=file]), textarea {
   float: left;
   height: 50px;
 }
+
+.tos p {
+  width: 60%;
+  float: left;
+  display: inline;
+  font-family: monospace;
+  font-size: 11px;
+}
+
+.whitelist {
+}

@@ -1,0 +1,31 @@
+{{> nav}}
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+  <div class="container">
+    {{#header}}
+    <img class="freudy-logo" alt="freudy" src="images/freudy.png">
+    <h1>{{blurb}}</h1>
+    <p>{{detail}}</p>
+    <div class="tos">
+    {{{terms}}}
+    </div>
+    {{/header}}
+  </div>
+</div>
+
+{{#about}}
+<div class="container">
+  <div class="row">
+    {{#team}}
+    <div class="col-md-4">
+      <h2>About us</h2>
+      <p class="lead">{{name}}</p>
+      <p>{{description}}</p>
+    </div>
+    {{/team}}
+  </div>
+</div>
+{{/about}}
+
+{{> scripts}}

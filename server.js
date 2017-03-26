@@ -1,3 +1,4 @@
+/* jshint node: true */
 'use strict';
 
 var express = require('express');
@@ -36,15 +37,15 @@ function exitWithError(err) {
 }
 
 if (!gaToken) {
-  exitWithError('Please set GA_TOKEN environment variable.')
+  exitWithError('Please set GA_TOKEN environment variable.');
 }
 
 if (!slackUrl) {
-  exitWithError('Please set SLACK_WEBHOOK_URL environment variable.')
+  exitWithError('Please set SLACK_WEBHOOK_URL environment variable.');
 }
 
 if (!clientId) {
-  exitWithError('Please set GOOGLE_CLIENTID environment variable.')
+  exitWithError('Please set GOOGLE_CLIENTID environment variable.');
 }
 
 var slack = require('./lib/slack')(slackUrl);
@@ -90,6 +91,10 @@ app.use(
 
 app.get('/', function (req, res) {
   res.render('main', _.assign({}, strings.main, dotty.get(req, 'session.user')));
+});
+
+app.get('/tos', function (req, res) {
+  res.render('tos', _.assign({}, strings.tos, dotty.get(req, 'session.user')));
 });
 
 app.get('/signin', function (req, res) {
@@ -185,7 +190,7 @@ app.post('/apply', validate(), rateLimit(), function (req, res) {
                 title: file.fieldname,
                 value: '<' + file.uri + '|View>',
                 short: true
-              }
+              };
             }))
         }
       ]
