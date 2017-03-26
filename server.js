@@ -1,4 +1,4 @@
-/* jshint node: true */
+/* jshint node: true, esversion: 6 */
 'use strict';
 
 var express = require('express');
@@ -20,6 +20,7 @@ var mv = require('mv');
 var path = require('path');
 var yaml = require('js-yaml');
 var async = require('async');
+var memjs = require('memjs');
 var changeCase = require('change-case');
 
 var strings = yaml.safeLoad(fs.readFileSync(path.resolve('./strings.yml')));
@@ -46,6 +47,17 @@ if (!slackUrl) {
 
 if (!clientId) {
   exitWithError('Please set GOOGLE_CLIENTID environment variable.');
+}
+
+var mc = require('connect-memjs')(session);
+let MEMCACHE_URL = process.env.MEMCACHE_URL || '127.0.0.1:11211';
+var mcstore = null;
+
+if (process.env.USE_GAE_MEMCACHE) {
+  MEMCACHE_URL = `${process.env.GAE_MEMCACHE_HOST}:${process.env.GAE_MEMCACHE_PORT}`;
+  var mcstore = new mc({servers: [MEMCACHE_URL]});
+} else {
+  var mcstore = new mc({servers: [MEMCACHE_URL], username: process.env.MEMCACHE_USERNAME, password: process.env.MEMCACHE_PASSWORD});
 }
 
 var slack = require('./lib/slack')(slackUrl);
@@ -77,7 +89,8 @@ app.use(
   session({
     resave: false,
     saveUninitialized: false,
-    secret: process.env.SESSION_SECRET || 'hack me pls, kthx'
+    secret: process.env.SESSION_SECRET || 'ytZ[7G$Hbab3DG9RoKozEXB?grQgMcE;6nm[eD9d',
+    store: mcstore
   }),
   cookieParser(),
   bodyParser.urlencoded({ extended: true }),
