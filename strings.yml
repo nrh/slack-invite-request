@@ -76,7 +76,7 @@ apply:
       application will be reviewed as quickly as possible and your
       invitation will be sent to the email address below if you are
       approved.
-      <p>If your domain has already been whitelisted, you can sign up <a href="https://cloud-therapy.slack.com/signup">directly</a>
+      <p>If your domain has already been whitelisted, you can sign up <a href="https://cloud-therapy.slack.com/signup">directly</a>.
     required: "Required field"
 
   disclaimer:
