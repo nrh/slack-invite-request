@@ -29,6 +29,11 @@ const async = require('async');
 const memjs = require('memjs');
 const changeCase = require('change-case');
 
+// put this before the request logger code to avoid spamming
+app.get('/_ah/health', function(req, res) {
+  res.jsonp({status: 'ok'});
+});
+
 app.use(logging.requestLogger);
 app.use(logging.errorLogger);
 
@@ -158,10 +163,6 @@ app.get('/apply', validate(), function (req, res) {
   strings.apply.form.email.value = user.emails[0].value;
 
   res.render('apply', _.assign({}, strings.apply, user));
-});
-
-app.get('/_ah/health', function(req, res) {
-  res.jsonp({status: 'ok'});
 });
 
 app.post('/apply', validate(), rateLimit(), function (req, res) {
