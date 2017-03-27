@@ -160,6 +160,10 @@ app.get('/apply', validate(), function (req, res) {
   res.render('apply', _.assign({}, strings.apply, user));
 });
 
+app.get('/_ah/health', function(req, res) {
+  res.jsonp({status: 'ok'});
+});
+
 app.post('/apply', validate(), rateLimit(), function (req, res) {
   var user = dotty.get(req, 'session.user');
   var files = req.files;
