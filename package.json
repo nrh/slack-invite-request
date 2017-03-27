@@ -20,6 +20,8 @@
   "author": "Kevin Lanni (https://github.com/therealklanni)",
   "license": "MIT",
   "dependencies": {
+    "@google/cloud-debug": "^0.9.2",
+    "@google/cloud-trace": "^0.6.3",
     "async": "^0.9.0",
     "body-parser": "^1.12.3",
     "change-case": "^2.3.0",
@@ -29,11 +31,16 @@
     "express": "^4.15.2",
     "express-handlebars": "^2.0.1",
     "express-session": "^1.15.1",
+    "express-winston": "^2.3.0",
     "got": "^2.9.2",
     "js-yaml": "^3.3.0",
     "lodash": "^3.8.0",
     "multer": "^0.1.8",
     "mv": "^2.0.3",
-    "public-ip": "^2.3.3"
+    "public-ip": "^2.3.3",
+    "winston": "^2.3.1"
+  },
+  "engines": {
+    "node": ">=4.3.2"
   }
 }

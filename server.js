@@ -1,36 +1,44 @@
 /* jshint node: true, esversion: 6 */
 'use strict';
 
-var express = require('express');
-var app = express();
+if (process.env.NODE_ENV === 'production') {
+  require('@google/cloud-trace').start();
+  require('@google/cloud-debug');
+}
 
-var hbs = require('express-handlebars');
-var session = require('express-session');
+const express = require('express');
+const app = express();
 
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var multer = require('multer');
-var validate = require('./lib/validate');
-var rateLimit = require('./lib/rate-limit');
+const hbs = require('express-handlebars');
+const session = require('express-session');
 
-var _ = require('lodash');
-var dotty = require('dotty');
-var fs = require('fs');
-var mv = require('mv');
-var path = require('path');
-var yaml = require('js-yaml');
-var async = require('async');
-var memjs = require('memjs');
-var changeCase = require('change-case');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const multer = require('multer');
+const validate = require('./lib/validate');
+const rateLimit = require('./lib/rate-limit');
+const logging = require('./lib/logging');
+
+const _ = require('lodash');
+const dotty = require('dotty');
+const fs = require('fs');
+const mv = require('mv');
+const path = require('path');
+const yaml = require('js-yaml');
+const async = require('async');
+const memjs = require('memjs');
+const changeCase = require('change-case');
+
+app.use(logging.requestLogger);
+app.use(logging.errorLogger);
 
 var strings = yaml.safeLoad(fs.readFileSync(path.resolve('./strings.yml')));
 
-var env = process.env;
-var gaToken = env.GA_TOKEN;
-var slackUrl = env.SLACK_WEBHOOK_URL;
-var clientId = env.GOOGLE_CLIENTID;
-var channel = env.SLACK_CHANNEL;
-var botName = env.SLACK_BOT_NAME || 'SIR';
+var gaToken = process.env.GA_TOKEN;
+var slackUrl = process.env.SLACK_WEBHOOK_URL;
+var clientId = process.env.GOOGLE_CLIENTID;
+var channel = process.env.SLACK_CHANNEL;
+var botName = process.env.SLACK_BOT_NAME || 'SIR';
 
 function exitWithError(err) {
   console.error(err);
@@ -89,6 +97,8 @@ app.engine('.hbs', hbs({
 app.set('view engine', '.hbs');
 app.set('views', './views');
 
+app.use(logging.requestLogger);
+
 app.use(
   session({
     resave: false,
@@ -96,6 +106,7 @@ app.use(
     secret: process.env.SESSION_SECRET || 'ytZ[7G$Hbab3DG9RoKozEXB?grQgMcE;6nm[eD9d',
     store: mcstore
   }),
+
   cookieParser(),
   bodyParser.urlencoded({ extended: true }),
   bodyParser.json(),
