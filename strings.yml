@@ -121,8 +121,9 @@ apply:
         html: <input type="checkbox" id="whitelist" name="whitelist">
 signin:
   blurb: "Thanks for your interest in joining!"
-  detail:
-    "To help verify your identity, we request that you sign in with Google
-    to continue."
+  detail: |
+    To help verify your identity, we request that you sign in with Google
+    to continue.
+    <p>If your domain has already been whitelisted, you can sign up <a href="https://cloud-therapy.slack.com/signup">directly</a>.
   subtext:
     "Your public profile information will be used verify your identity."
