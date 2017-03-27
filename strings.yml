@@ -71,12 +71,13 @@ apply:
   # Displayed at the top of the page
   header:
     blurb: "You're almost there!"
-    description:
-      "Please fill out the form below to complete your application. Your
+    description: |
+      Please fill out the form below to complete your application. Your
       application will be reviewed as quickly as possible and your
       invitation will be sent to the email address below if you are
       approved. The more information you provide, the more likely we can
-      verify you."
+      verify you.
+      <p>If your domain has already been whitelisted, you can sign up <a href="https://cloud-therapy.slack.com/signup">directly</a>
     required: "Required field"
 
   disclaimer:
